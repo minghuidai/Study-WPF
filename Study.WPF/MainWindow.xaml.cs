@@ -18,11 +18,15 @@ namespace Study.WPF
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : BaseWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+
+            //if (!this.IsInDesignMode) MessageBox.Show("design mode.");
+
+            //this.WindowStyle = System.Windows.WindowStyle.None;
         }
     }
 }
