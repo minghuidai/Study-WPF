@@ -22,7 +22,7 @@ namespace Study.WPF
         /// </summary>
         public BaseWindow() {
             //this.AllowsTransparency = true;
-            this.Background = Brushes.LightBlue;
+            this.Background = (SolidColorBrush) new BrushConverter().ConvertFrom("#f0f0f0"); // Brushes..ge.LightBlue;
             this.BorderBrush = Brushes.Red;
         }
 
