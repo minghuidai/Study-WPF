@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\BaseWindow.cs" />
+    <Compile Include="BingMap\BingMapSpatialQuery.cs" />
     <Compile Include="Windows\BingMapTestWindow.xaml.cs">
       <DependentUpon>BingMapTestWindow.xaml</DependentUpon>
     </Compile>
