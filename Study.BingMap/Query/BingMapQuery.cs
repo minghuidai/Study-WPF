@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maps.MapControl.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -39,16 +40,16 @@ namespace Study.BingMap.Query
         /// <param name="queryOption1"></param>
         /// <param name="queryOption2"></param>
         /// <returns></returns>
-        public XmlDocument SearchByArea(string accessID, string dataSourceName, string entityTypeName, string spatialFilter, string queryOption1, string queryOption2)
+        public XmlDocument SearchByArea(string accessID, string dataSourceName, string entityTypeName, MapPolygon polygon, string queryOption1, string queryOption2)
         {
+            // URL format
+            const string urlFormat = @"{0}/{1}/{2}/{3}?{4}&{5}&{6}&{7}";
+
             // make the query url
-            string url = @"{0}/{1}/{2}/{3}?spatialFilter={4}&{5}&{6}&{7}";
+            string url = string.Format(urlFormat, _RootUrl, accessID, dataSourceName, entityTypeName, GetSpatialFilterString(polygon));
 
             return GetXmlResponse(url);
         }
-
-
-
 
 
 
@@ -83,6 +84,30 @@ namespace Study.BingMap.Query
                 xmlDoc.Load(response.GetResponseStream());
                 return xmlDoc;
             }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Generate the spatial filter string from polygon.
+        /// </summary>
+        /// <param name="polygon"></param>
+        /// <returns></returns>
+        public static string GetSpatialFilterString(MapPolygon polygon) {
+            var sb = new StringBuilder("spatialFilter=intersects('POLYGON ((");
+
+            //spatialFilter=intersects('POLYGON ((-112 42,-112 41,-123 41,-123 42,-112 42))')
+            string prefix = "";
+            foreach (var loc in polygon.Locations) {
+                sb.Append(prefix);
+                prefix = ",";
+                sb.Append(string.Format("{0} {1}", loc.Latitude, loc.Longitude));
+            }
+
+            sb.Append("))')");
+            return sb.ToString();
         }
 
     }
