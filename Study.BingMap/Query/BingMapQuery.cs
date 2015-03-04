@@ -16,6 +16,9 @@ namespace Study.BingMap.Query
 
         private const string _RootUrl = @"http://spatial.virtualearth.net/REST/v1/data";
         private string _BingMapKey;
+        public string _DataSourceID { get; set; }
+        public string _DataSourceName { get; set; }
+        public string _EntityTypeName { get; set; }
 
 
         /// <summary>
@@ -25,8 +28,24 @@ namespace Study.BingMap.Query
         public BingMapQuery(string key)
         {
             _BingMapKey = key;
+
+            _DataSourceID = "f22876ec257b474b82fe2ffcb8393150";
+            _DataSourceName = "NavteqNA";
+            _EntityTypeName = "NavteqPOIs";
+
+            // sample query url
+            //http://spatial.virtualearth.net/REST/v1/data/f22876ec257b474b82fe2ffcb8393150/NavteqNA/NavteqPOIs?spatialFilter=nearby(40.83274904439099,-74.3163299560546935,5)&$filter=EntityTypeID%20eq%20'6000'&$select=EntityID,DisplayName,Latitude,Longitude,__Distance&$top=3&key=anyBingMapsKey
+
         }
 
+
+
+
+        // make a sample query
+        public XmlDocument SampleQuery()
+        {
+            return GetXmlResponse(@"http://spatial.virtualearth.net/REST/v1/data/f22876ec257b474b82fe2ffcb8393150/NavteqNA/NavteqPOIs?spatialFilter=nearby(40.83274904439099,-74.3163299560546935,5)&$filter=EntityTypeID%20eq%20'6000'&$select=EntityID,DisplayName,Latitude,Longitude,__Distance&$top=3&key=" + _BingMapKey);
+        }
 
 
 
