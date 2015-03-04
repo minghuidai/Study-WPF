@@ -61,6 +61,9 @@
     <Compile Include="Windows\BingMapTestWindow.xaml.cs">
       <DependentUpon>BingMapTestWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ChromeWindow.xaml.cs">
+      <DependentUpon>ChromeWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,6 +77,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\BingMapTestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ChromeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
