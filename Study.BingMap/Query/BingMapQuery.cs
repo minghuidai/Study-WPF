@@ -18,7 +18,7 @@ namespace Study.BingMap.Query
         private string _BingMapKey;
         public string _DataSourceID { get; set; }
         public string _DataSourceName { get; set; }
-        public string _EntityTypeName { get; set; }
+        public string _DataEntityName { get; set; }
 
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Study.BingMap.Query
 
             _DataSourceID = "f22876ec257b474b82fe2ffcb8393150";
             _DataSourceName = "NavteqNA";
-            _EntityTypeName = "NavteqPOIs";
+            _DataEntityName = "NavteqPOIs";
 
             // sample query url
             //http://spatial.virtualearth.net/REST/v1/data/f22876ec257b474b82fe2ffcb8393150/NavteqNA/NavteqPOIs?spatialFilter=nearby(40.83274904439099,-74.3163299560546935,5)&$filter=EntityTypeID%20eq%20'6000'&$select=EntityID,DisplayName,Latitude,Longitude,__Distance&$top=3&key=anyBingMapsKey
@@ -42,9 +42,10 @@ namespace Study.BingMap.Query
 
 
         // make a sample query
-        public XmlDocument SampleQuery()
+        public IEnumerable<LocationEntity> SampleQuery()
         {
-            return GetXmlResponse(@"http://spatial.virtualearth.net/REST/v1/data/f22876ec257b474b82fe2ffcb8393150/NavteqNA/NavteqPOIs?spatialFilter=nearby(40.83274904439099,-74.3163299560546935,5)&$filter=EntityTypeID%20eq%20'6000'&$select=EntityID,DisplayName,Latitude,Longitude,__Distance&$top=3&key=" + _BingMapKey);
+            var xmlResponse = GetXmlResponse(@"http://spatial.virtualearth.net/REST/v1/data/f22876ec257b474b82fe2ffcb8393150/NavteqNA/NavteqPOIs?spatialFilter=nearby(40.83274904439099,-74.3163299560546935,5)&$filter=EntityTypeID%20eq%20'6000'&$select=EntityID,DisplayName,Latitude,Longitude,__Distance&$top=3&key=" + _BingMapKey);
+            return GetQueryResults(xmlResponse);
         }
 
 
@@ -65,7 +66,7 @@ namespace Study.BingMap.Query
             const string urlFormat = @"{0}/{1}/{2}/{3}?{4}&{5}&{6}&{7}";
 
             // make the query url
-            string url = string.Format(urlFormat, _RootUrl, accessID, dataSourceName, entityTypeName, GetSpatialFilterString(polygon));
+            string url = string.Format(urlFormat, _RootUrl, accessID, dataSourceName, entityTypeName, Helper.GetSpatialFilterString(polygon));
 
             return GetXmlResponse(url);
         }
@@ -79,6 +80,7 @@ namespace Study.BingMap.Query
             //Create REST Services geocode request using Locations API
             string geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations/" + addressQuery + "?o=xml&key=" + _BingMapKey;
 
+            
 
             //Make the request and get the response
             XmlDocument geocodeResponse = GetXmlResponse(geocodeRequest);
@@ -109,25 +111,59 @@ namespace Study.BingMap.Query
 
 
 
-        /// <summary>
-        /// Generate the spatial filter string from polygon.
-        /// </summary>
-        /// <param name="polygon"></param>
-        /// <returns></returns>
-        public static string GetSpatialFilterString(MapPolygon polygon) {
-            var sb = new StringBuilder("spatialFilter=intersects('POLYGON ((");
 
-            //spatialFilter=intersects('POLYGON ((-112 42,-112 41,-123 41,-123 42,-112 42))')
-            string prefix = "";
-            foreach (var loc in polygon.Locations) {
-                sb.Append(prefix);
-                prefix = ",";
-                sb.Append(string.Format("{0} {1}", loc.Latitude, loc.Longitude));
+        //Search for POI near a point
+        private IEnumerable<LocationEntity> GetQueryResults(XmlDocument xmlDoc)
+        {
+            //Get location information from geocode response 
+
+            //Create namespace manager
+            XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
+            nsmgr.AddNamespace("rest", "http://schemas.microsoft.com/search/local/ws/rest/v1");
+
+            //Get all locations in the response and then extract the coordinates for the top location
+            XmlNodeList locationElements = xmlDoc.SelectNodes("//rest:Location", nsmgr);
+
+            if (locationElements.Count == 0) return null;
+
+            //Get the geocode points that are used for display (UsageType=Display)
+            XmlNodeList displayGeocodePoints =
+                    locationElements[0].SelectNodes(".//rest:GeocodePoint/rest:UsageType[.='Display']/parent::node()", nsmgr);
+
+
+            var result = new List<LocationEntity>();
+
+            foreach (XmlNode locElement in locationElements)
+            {
+                var entity = new LocationEntity();
+                entity.EntityTypeID = locElement.InnerXml;
+
+                result.Add(entity);
             }
 
-            sb.Append("))')");
-            return sb.ToString();
+            //string latitude = displayGeocodePoints[0].SelectSingleNode(".//rest:Latitude", nsmgr).InnerText;
+            //string longitude = displayGeocodePoints[0].SelectSingleNode(".//rest:Longitude", nsmgr).InnerText;
+            //ComboBoxItem entityTypeID = (ComboBoxItem)EntityType.SelectedItem;
+            //ComboBoxItem distance = (ComboBoxItem)Distance.SelectedItem;
+
+            ////Create the Bing Spatial Data Services request to get nearby POI
+            //string findNearbyPOIRequest = "http://spatial.virtualearth.net/REST/v1/data/f22876ec257b474b82fe2ffcb8393150/NavteqNA/NavteqPOIs?spatialfilter=nearby("
+            //+ latitude + "," + longitude + "," + distance.Content + ")"
+            //+ "&$filter=EntityTypeID%20EQ%20'" + entityTypeID.Tag + "'&$select=EntityID,DisplayName,__Distance,Latitude,Longitude,AddressLine,Locality,AdminDistrict,PostalCode&$top=10"
+            //+ "&key=" + Shared.BingMapKey;
+
+            ////Submit the Bing Spatial Data Services request and retrieve the response
+            //XmlDocument nearbyPOI = GetXmlResponse(findNearbyPOIRequest);
+
+            ////Center the map at the geocoded location and display the results
+            //myMap.Center = new Location(Convert.ToDouble(latitude), Convert.ToDouble(longitude));
+            //myMap.ZoomLevel = 12;
+            //DisplayResults(nearbyPOI);
+
+            return result;
         }
+
+
 
     }
 }

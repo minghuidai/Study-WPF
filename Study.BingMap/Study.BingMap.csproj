@@ -49,6 +49,10 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\BingMapQuery.cs" />
+    <Compile Include="Query\ReverseGeoCodeFetcher .cs" />
+    <Compile Include="Query\Helper.cs" />
+    <Compile Include="Query\LocationEntity.cs" />
+    <Compile Include="Query\SpatialService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
