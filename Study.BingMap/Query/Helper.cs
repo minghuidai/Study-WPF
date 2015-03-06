@@ -140,5 +140,58 @@ namespace Study.BingMap.Query
 
             return result;
         }
+
+
+
+
+        /// <summary>
+        /// Parse the compressed shape value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="parsedValue"></param>
+        /// <returns></returns>
+        public static bool TryParseEncodedValue(string value, out LocationCollection parsedValue)
+        {
+            
+
+            string safeCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-";
+            parsedValue = null; 
+            var list = new LocationCollection();
+            int index = 0;
+            int xsum = 0, ysum = 0;
+            while (index < value.Length)
+            {
+                long n = 0;
+                int k = 0;
+                while (true)
+                {
+                    if (index >= value.Length)
+                        return false;
+                    int b = safeCharacters.IndexOf(value[index++]);
+                    if (b == -1)
+                        return false;
+                    n |= ((long)b & 31) << k;
+                    k += 5;
+                    if (b < 32) break;
+                }
+                int diagonal = (int)((Math.Sqrt(8 * n + 5) - 1) / 2);
+                n -= diagonal * (diagonal + 1L) / 2;
+                int ny = (int)n;
+                int nx = diagonal - ny;
+                nx = (nx >> 1) ^ -(nx & 1);
+                ny = (ny >> 1) ^ -(ny & 1);
+                xsum += nx;
+                ysum += ny;
+                double lat = ysum * 0.00001;
+                double lon = xsum * 0.00001;
+                //Trim latlong values to supported ranges
+                lat = Math.Max(-85, Math.Min(85, lat));
+                lon = Math.Max(-180, Math.Min(180, lon));
+                list.Add(new Location(lat, lon));
+            }
+            parsedValue = list;
+            return true;
+        }
+
     }
 }

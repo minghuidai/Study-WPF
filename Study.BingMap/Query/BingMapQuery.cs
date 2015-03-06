@@ -165,5 +165,39 @@ namespace Study.BingMap.Query
 
 
 
+
+        /// <summary>
+        /// Get bountries from the address by passing a description of the place
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="level">CountryRegion, AdminDivision2</param>
+        public LocationCollection GetBoundries(string address, string level = "AdminDivision2")
+        {
+
+
+            // Original 
+            //string urlFormat = "http://platform.bing.com/geo/spatial/v1/public/Geodata?SpatialFilter=GetBoundary('GA 30024',1,'AdminDivision2',0,0,'en','US')&$format=json&key=Ai6zQ5AwxFAZKY3DtRmKAPJHZVlK4h_e01jNbblWGbagsXzwH0nf5vYrTEr13kBd";
+
+            string urlFormat = "http://platform.bing.com/geo/spatial/v1/public/Geodata?SpatialFilter=GetBoundary('{0}',1,'{2}',0,0,'en','US')&$format=json&key={1}";
+
+            string url = string.Format(urlFormat, address, _BingMapKey, level);
+
+            GeoDataSchema.Response response = Helper.GetJsonResponse(url);
+
+            if (response == null || response.ResultSet == null || response.ResultSet.Results.Count() == 0) return null;
+
+            var result = response.ResultSet.Results[0];
+
+            var primitive = result.Primitives[0];
+
+            // parse shape value to get location collection
+            LocationCollection locs;
+            if (Helper.TryParseEncodedValue(primitive.Shape.Substring(2), out locs))
+                return locs;
+            else
+                return null;
+
+        }
+
     }
 }

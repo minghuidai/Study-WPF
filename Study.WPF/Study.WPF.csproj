@@ -57,7 +57,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\BaseWindow.cs" />
-    <Compile Include="BingMap\BingMapSpatialQuery.cs" />
     <Compile Include="Windows\BingMapTestWindow.xaml.cs">
       <DependentUpon>BingMapTestWindow.xaml</DependentUpon>
     </Compile>
@@ -114,6 +113,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Study.BingMap\Study.BingMap.csproj">
+      <Project>{1320189e-8941-4ee0-8585-47ff845ad6c6}</Project>
+      <Name>Study.BingMap</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

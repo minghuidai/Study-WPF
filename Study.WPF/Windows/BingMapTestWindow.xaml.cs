@@ -1,5 +1,6 @@
 ﻿using Microsoft.Maps.MapControl.WPF;
 using Microsoft.Maps.MapControl.WPF.Design;
+using Study.BingMap.Query;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -33,6 +34,7 @@ namespace Study.WPF.Windows
             InitializeComponent();
 
             myMap.Focus();
+     
 
             // Displays the current latitude and longitude as the map animates.
             myMap.ViewChangeOnFrame += new EventHandler<MapEventArgs>(viewMap_ViewChangeOnFrame);
@@ -275,6 +277,36 @@ namespace Study.WPF.Windows
             myMap.Children.Add(polygon);
 
             _PolygonPoints = null;
+        }
+
+        private void btnDrawBoundry_Click(object sender, RoutedEventArgs e)
+        {
+            string place = txtPlace.Text;
+            string level = txtLevel.Text;
+
+            var bingservice = new BingMapQuery("Ai6zQ5AwxFAZKY3DtRmKAPJHZVlK4h_e01jNbblWGbagsXzwH0nf5vYrTEr13kBd");
+
+            var locations = bingservice.GetBoundries(place, level);
+
+            if (locations != null)
+            {
+                var polygon = new MapPolygon();
+                polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
+                polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
+                polygon.StrokeThickness = 2;
+                polygon.Opacity = 0.7;
+                polygon.Locations = locations;
+                myMap.Children.Add(polygon);
+
+                myMap.SetView(locations[0], myMap.ZoomLevel);
+            }
+        
+
+        }
+
+        private void btReset_Click(object sender, RoutedEventArgs e)
+        {
+            myMap.Children.Clear();
         }
 
     }
