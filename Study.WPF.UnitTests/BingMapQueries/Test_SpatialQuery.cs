@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Study.BingMap.Query;
 using System.Diagnostics;
-using Study.BingMap.DataContracts;
 
 namespace Study.WPF.UnitTests.BingMapQueries
 {
@@ -41,13 +40,11 @@ namespace Study.WPF.UnitTests.BingMapQueries
 
             string QueryUrl1 = "http://platform.bing.com/geo/spatial/v1/public/Geodata?SpatialFilter=GetBoundary('King County',1,'AdminDivision2',0,0,'en','US')&$format=json&key=Ai6zQ5AwxFAZKY3DtRmKAPJHZVlK4h_e01jNbblWGbagsXzwH0nf5vYrTEr13kBd";
 
-            string QueryUrl2 = "http://localhost:56793/fa/query/TestParseJson";
-
-            BoundryQueryResponseDataContract response = Helper.GetJsonResponse(QueryUrl2);
+            GeoDataSchema.Response response = Helper.GetJsonResponse(QueryUrl1);
             //BoundryQueryResponseDataContract response = Helper.GetJsonResponse(@"G:\Temp\json data.txt");
             
 
-            Assert.IsTrue(response.d != null);
+            Assert.IsTrue(response.ResultSet != null);
 
         }
 

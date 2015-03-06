@@ -64,6 +64,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BingMapDataContracts\BingMapDataContracts.csproj">
+      <Project>{14a69571-570e-4913-a11a-abfd6e9d546f}</Project>
+      <Name>BingMapDataContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Study.BingMap\Study.BingMap.csproj">
       <Project>{1320189e-8941-4ee0-8585-47ff845ad6c6}</Project>
       <Name>Study.BingMap</Name>

@@ -1,6 +1,4 @@
 ﻿using Microsoft.Maps.MapControl.WPF;
-using Study.BingMap.DataContracts;
-//using Study.BingMap.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -73,38 +71,6 @@ namespace Study.BingMap.Query
                 throw e;
             }
         }
-
-
-
-        public static BoundryQueryResponseDataContract GetJsonResponseFromFile(string filename)
-        {
-            try
-            {
-                string text = System.IO.File.ReadAllText(filename);
-
-                MemoryStream receiveStream = new MemoryStream();
-                StreamWriter writer = new StreamWriter(receiveStream);
-                writer.Write(text);
-                writer.Flush();
-                receiveStream.Position = 0;
-                
-                //Stream receiveStream = new StringReader(text);
-
-                var jsonSerializer = new DataContractJsonSerializer(typeof(BoundryQueryResponseDataContract));
-
-                //object objResponse = jsonSerializer.ReadObject(response.GetResponseStream());
-                BoundryQueryResponseDataContract objResponse = (BoundryQueryResponseDataContract)jsonSerializer.ReadObject(receiveStream);
-
-                //BoundryQueryResponseDataContract jsonResponse = objResponse as BoundryQueryResponseDataContract;
-                return objResponse;
-
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
 
 
 
