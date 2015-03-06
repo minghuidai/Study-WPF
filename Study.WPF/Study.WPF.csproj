@@ -37,8 +37,12 @@
     <Reference Include="Microsoft.Maps.MapControl.WPF">
       <HintPath>..\_lib\Microsoft.Maps.MapControl.WPF.dll</HintPath>
     </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="SpreadsheetGear2012.Core, Version=7.1.1.120, Culture=neutral, PublicKeyToken=39c186f5904944ec, processorArchitecture=MSIL" />
+    <Reference Include="SpreadsheetGear2012.Windows.WPF, Version=7.1.1.120, Culture=neutral, PublicKeyToken=39c186f5904944ec, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,6 +61,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\BaseWindow.cs" />
+    <Compile Include="Pages\SpreadSheetGearSample.xaml.cs">
+      <DependentUpon>SpreadSheetGearSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\BineMapSearchWindow.xaml.cs">
+      <DependentUpon>BineMapSearchWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\BingMapTestWindow.xaml.cs">
       <DependentUpon>BingMapTestWindow.xaml</DependentUpon>
     </Compile>
@@ -75,6 +85,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\SpreadSheetGearSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\BineMapSearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\BingMapTestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +133,10 @@
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BingMapDataContracts\BingMapDataContracts.csproj">
+      <Project>{14a69571-570e-4913-a11a-abfd6e9d546f}</Project>
+      <Name>BingMapDataContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Study.BingMap\Study.BingMap.csproj">
       <Project>{1320189e-8941-4ee0-8585-47ff845ad6c6}</Project>
       <Name>Study.BingMap</Name>
