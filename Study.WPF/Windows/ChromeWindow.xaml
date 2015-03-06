@@ -1,8 +1,22 @@
 ﻿<Window x:Class="Study.WPF.Windows.ChromeWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ChromeWindow" Height="300" Width="300">
-    <Grid>
+        Title="ChromeWindow" Height="300" Width="300" 
+        WindowStyle="None" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+    
+    <DockPanel x:Name="RootWindow">
+        <DockPanel>
+            <Button x:Name="btnClose" DockPanel.Dock="Right"></Button>
+            <Button x:Name="btnMax" DockPanel.Dock="Right"></Button>
+            <Button x:Name="btnMin" DockPanel.Dock="Right"></Button>
+            <TextBlock HorizontalAlignment="Center" >Application Name</TextBlock>
+            
+            <ContentControl Content="{Binding CurrentPage}"></ContentControl>
+        </DockPanel>
         
-    </Grid>
+        
+    </DockPanel>
+
+    
+    
 </Window>

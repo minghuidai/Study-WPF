@@ -1,8 +1,12 @@
 ﻿using Microsoft.Maps.MapControl.WPF;
+using Study.BingMap.DataContracts;
+//using Study.BingMap.Helpers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -20,6 +24,11 @@ namespace Study.BingMap.Query
                 HttpWebRequest request = WebRequest.Create(requestUrl) as HttpWebRequest;
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
 
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    throw new Exception(String.Format("Server error (HTTP {0}: {1}).", response.StatusCode, response.StatusDescription));
+                }
+
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(response.GetResponseStream());
                 return (xmlDoc);
@@ -31,6 +40,68 @@ namespace Study.BingMap.Query
 
                 Console.Read();
                 return null;
+            }
+        }
+
+
+
+        public static BoundryQueryResponseDataContract GetJsonResponse(string requestUrl)
+        {
+            try
+            {
+                HttpWebRequest request = WebRequest.Create(requestUrl) as HttpWebRequest;
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+
+                //if (response.StatusCode != HttpStatusCode.OK)
+                //{
+                //    throw new Exception(String.Format("Server error (HTTP {0}: {1}).", response.StatusCode, response.StatusDescription));                
+                //}
+
+                var receiveStream = response.GetResponseStream();
+
+                var jsonSerializer = new DataContractJsonSerializer(typeof(BoundryQueryResponseDataContract));
+
+                //object objResponse = jsonSerializer.ReadObject(response.GetResponseStream());
+                BoundryQueryResponseDataContract objResponse = (BoundryQueryResponseDataContract)jsonSerializer.ReadObject(receiveStream);
+
+                //BoundryQueryResponseDataContract jsonResponse = objResponse as BoundryQueryResponseDataContract;
+                return objResponse;
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
+
+        public static BoundryQueryResponseDataContract GetJsonResponseFromFile(string filename)
+        {
+            try
+            {
+                string text = System.IO.File.ReadAllText(filename);
+
+                MemoryStream receiveStream = new MemoryStream();
+                StreamWriter writer = new StreamWriter(receiveStream);
+                writer.Write(text);
+                writer.Flush();
+                receiveStream.Position = 0;
+                
+                //Stream receiveStream = new StringReader(text);
+
+                var jsonSerializer = new DataContractJsonSerializer(typeof(BoundryQueryResponseDataContract));
+
+                //object objResponse = jsonSerializer.ReadObject(response.GetResponseStream());
+                BoundryQueryResponseDataContract objResponse = (BoundryQueryResponseDataContract)jsonSerializer.ReadObject(receiveStream);
+
+                //BoundryQueryResponseDataContract jsonResponse = objResponse as BoundryQueryResponseDataContract;
+                return objResponse;
+
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 

@@ -209,6 +209,73 @@ namespace Study.WPF.Windows
 
         }
 
+        private void btnTileLayer_Click(object sender, RoutedEventArgs e)
+        {
+            AddTileOverlay();
+        }
+
+
+
+        private void AddTileOverlay()
+        {
+
+            // Create a new map layer to add the tile overlay to.
+            var tileLayer = new MapTileLayer();
+
+            // The source of the overlay.
+            TileSource tileSource = new TileSource();
+            tileSource.UriFormat = "{UriScheme}://ecn.t0.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=129&mkt=en-us&shading=hill&stl=H";
+
+            // Add the tile overlay to the map layer
+            tileLayer.TileSource = tileSource;
+
+
+
+
+            // Add the map layer to the map
+            if (!myMap.Children.Contains(tileLayer))
+            {
+                myMap.Children.Add(tileLayer);
+            }
+            tileLayer.Opacity = 0.2;
+        }
+
+
+
+        private void test()
+        {
+            //Microsoft.Maps.MapControl.WPF.Core.
+        }
+
+
+
+        private void btnDrawBoundries_Click(object sender, RoutedEventArgs e)
+        {
+            var locations = new LocationCollection();
+            locations.Add(new Location(34.064914703369141, -84.093452453613281));
+
+            MapPolygon p = new MapPolygon()
+            {
+        
+
+            };
+
+            if (_PolygonPoints == null || _PolygonPoints.Count < 3)
+            {
+                MessageBox.Show("You must pick up at least 3 locations to create a polygon.");
+                return;
+            }
+
+            var polygon = new MapPolygon();
+            polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
+            polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
+            polygon.StrokeThickness = 5;
+            polygon.Opacity = 0.7;
+            polygon.Locations = _PolygonPoints;
+            myMap.Children.Add(polygon);
+
+            _PolygonPoints = null;
+        }
 
     }
 }
