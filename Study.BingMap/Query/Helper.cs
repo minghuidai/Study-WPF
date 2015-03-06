@@ -45,7 +45,7 @@ namespace Study.BingMap.Query
 
 
 
-        public static BoundryQueryResponseDataContract GetJsonResponse(string requestUrl)
+        public static GeoDataSchema.Response GetJsonResponse(string requestUrl)
         {
             try
             {
@@ -59,10 +59,10 @@ namespace Study.BingMap.Query
 
                 var receiveStream = response.GetResponseStream();
 
-                var jsonSerializer = new DataContractJsonSerializer(typeof(BoundryQueryResponseDataContract));
+                var jsonSerializer = new DataContractJsonSerializer(typeof(GeoDataSchema.Response));
 
                 //object objResponse = jsonSerializer.ReadObject(response.GetResponseStream());
-                BoundryQueryResponseDataContract objResponse = (BoundryQueryResponseDataContract)jsonSerializer.ReadObject(receiveStream);
+                GeoDataSchema.Response objResponse = (GeoDataSchema.Response)jsonSerializer.ReadObject(receiveStream);
 
                 //BoundryQueryResponseDataContract jsonResponse = objResponse as BoundryQueryResponseDataContract;
                 return objResponse;
