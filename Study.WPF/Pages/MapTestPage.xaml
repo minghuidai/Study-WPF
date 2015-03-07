@@ -1,8 +1,13 @@
-﻿<Window x:Class="Study.WPF.Windows.BingMapTestWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
-        Title="BingMapTestWindow" Height="300" Width="800">
+﻿<Page x:Class="Study.WPF.Pages.MapTestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="600"
+	Title="MapTestPage">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -82,7 +87,7 @@
             <Button Name="btnTileLayer" Margin="8" Click="btnTileLayer_Click">Tile Layer</Button>
 
             <Button Name="btnDrawBoundries" Margin="8" Click="btnDrawBoundries_Click">Tile Layer</Button>
-            
+
             <Label>Location:</Label>
             <TextBox Name="txtPlace" Width="100"></TextBox>
             <Label>Level:</Label>
@@ -96,11 +101,11 @@
                 <TextBlock>Postcode4</TextBlock>
                 <TextBlock>Neighborhood</TextBlock>
                 <TextBlock>PopulatedPlace</TextBlock>
-           
+
             </ComboBox>
             <Button Name="btnDrawBoundry" Click="btnDrawBoundry_Click">Draw Boundries</Button>
             <Button Name="btReset" Click="btReset_Click">Reset</Button>
         </StackPanel>
 
     </Grid>
-</Window>
+</Page>

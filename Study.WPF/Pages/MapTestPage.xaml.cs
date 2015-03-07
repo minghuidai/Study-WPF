@@ -2,39 +2,27 @@
 using Microsoft.Maps.MapControl.WPF.Design;
 using Study.BingMap.Query;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace Study.WPF.Windows
+namespace Study.WPF.Pages
 {
-    /// <summary>
-    /// Interaction logic for BingMapTestWindow.xaml
-    /// </summary>
-
-
-    public partial class BingMapTestWindow : Window
+ 
+    public partial class MapTestPage : Page
     {
+
         LocationConverter locConverter = new LocationConverter();
         bool _PickingLocation = false;
         LocationCollection _PolygonPoints = null;
 
-        public BingMapTestWindow()
+        public MapTestPage()
         {
             InitializeComponent();
 
             myMap.Focus();
-     
+
 
             // Displays the current latitude and longitude as the map animates.
             myMap.ViewChangeOnFrame += new EventHandler<MapEventArgs>(viewMap_ViewChangeOnFrame);
@@ -258,7 +246,7 @@ namespace Study.WPF.Windows
 
             MapPolygon p = new MapPolygon()
             {
-        
+
 
             };
 
@@ -300,7 +288,7 @@ namespace Study.WPF.Windows
 
                 myMap.SetView(locations[0], myMap.ZoomLevel);
             }
-        
+
 
         }
 

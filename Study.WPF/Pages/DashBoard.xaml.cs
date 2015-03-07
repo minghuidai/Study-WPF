@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Study.WPF.Pages
 {
     /// <summary>
-    /// Interaction logic for SpreadSheetGearSample.xaml
+    /// Interaction logic for DashBoard.xaml
     /// </summary>
-    public partial class SpreadSheetGearSample : Page
+    public partial class DashBoard : Page
     {
-        public SpreadSheetGearSample()
+        public DashBoard()
         {
             InitializeComponent();
         }
