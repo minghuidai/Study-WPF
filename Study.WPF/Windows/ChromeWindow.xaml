@@ -4,12 +4,32 @@
         Title="ChromeWindow" Height="300" Width="300" 
         WindowStyle="None" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <Ellipse x:Key="RefractionLayer">
+                <Ellipse.Fill>
+                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                        <RadialGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
+                                <TranslateTransform X="0.02" Y="0.3"/>
+                            </TransformGroup>
+                        </RadialGradientBrush.RelativeTransform>
+                        <GradientStop Offset="1" Color="#00000000"/>
+                        <GradientStop Offset="0.4" Color="#FFFFFFFF"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </ResourceDictionary>
+    </Window.Resources>
     <DockPanel x:Name="RootWindow">
         <DockPanel>
             <Button x:Name="btnClose" DockPanel.Dock="Right"></Button>
             <Button x:Name="btnMax" DockPanel.Dock="Right"></Button>
             <Button x:Name="btnMin" DockPanel.Dock="Right"></Button>
             <TextBlock HorizontalAlignment="Center" >Application Name</TextBlock>
+
             
             <ContentControl Content="{Binding CurrentPage}"></ContentControl>
         </DockPanel>
