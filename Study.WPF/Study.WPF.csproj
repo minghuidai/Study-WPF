@@ -64,6 +64,9 @@
     <Compile Include="Pages\DashBoard.xaml.cs">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FancyStyleButton.xaml.cs">
+      <DependentUpon>FancyStyleButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MapTestPage.xaml.cs">
       <DependentUpon>MapTestPage.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\DashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FancyStyleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
