@@ -9,6 +9,8 @@
 
     <StackPanel>
         <TextBlock><Hyperlink NavigateUri="MapTestPage.xaml">Bing Map Test</Hyperlink></TextBlock>
-        <TextBlock><Hyperlink NavigateUri="FancyStyleButton.xaml">Fancy Style Button</Hyperlink></TextBlock>
+        <TextBlock><Hyperlink NavigateUri="FancyStyleButton.xaml">Fancy Style</Hyperlink></TextBlock>
+        <TextBlock><Hyperlink NavigateUri="ComboBoxStylePage.xaml">ComboBox Style</Hyperlink></TextBlock>
+        
     </StackPanel>
 </Page>
