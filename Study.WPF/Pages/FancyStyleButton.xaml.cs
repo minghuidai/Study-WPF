@@ -33,6 +33,9 @@ namespace Study.WPF.Pages
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             var ddd = btnStart.IsMouseCaptureWithin;
+
+            var b = new Button();
+           
         }
     }
 }
