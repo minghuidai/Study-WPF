@@ -219,16 +219,14 @@
   <JournalEntryUnifiedViewConverter x:Key="JournalEntryUnifiedViewConverter"/>
 
   <!-- SimpleStyles: Frame -->
-  
-  <Style x:Key="{x:Type Frame}" TargetType="Frame">
+
+    <Style TargetType="{x:Type Frame}">
     <Setter Property="SnapsToDevicePixels" Value="true"/>
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="Frame">
           <DockPanel>
-            <Grid Background="{StaticResource LightBrush}"
-              DockPanel.Dock="Top"
-              Height="22">
+            <Grid Background="{StaticResource LightBrush}" DockPanel.Dock="Top" Height="22">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>

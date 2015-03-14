@@ -44,6 +44,14 @@
                     <TextBlock x:Name="txtButton">Create Polygon</TextBlock>
                 </Button>
             </m:MapLayer>-->
+            
+            <m:Map.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Remove the point"></MenuItem>
+                </ContextMenu>
+            </m:Map.ContextMenu>
+            
+
 
         </m:Map>
 

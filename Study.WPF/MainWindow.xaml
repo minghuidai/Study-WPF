@@ -1,8 +1,11 @@
-﻿<NavigationWindow x:Class="Study.WPF.MainWindow"
+﻿<Window x:Class="Study.WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:src="clr-namespace:Study.WPF" Source="Pages\DashBoard.xaml"
+        xmlns:src="clr-namespace:Study.WPF"
         Title="Study WPF" Height="350" Width="525" Padding="0"
         >
    
-</NavigationWindow>
+    <Grid>
+        <Frame Source="Pages\DashBoard.xaml"></Frame>
+    </Grid>
+</Window>
