@@ -38,8 +38,12 @@
       <HintPath>..\_lib\Microsoft.Maps.MapControl.WPF.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework" />
-    <Reference Include="SpreadsheetGear2012.Core, Version=7.1.1.120, Culture=neutral, PublicKeyToken=39c186f5904944ec, processorArchitecture=MSIL" />
-    <Reference Include="SpreadsheetGear2012.Windows.WPF, Version=7.1.1.120, Culture=neutral, PublicKeyToken=39c186f5904944ec, processorArchitecture=MSIL" />
+    <Reference Include="SpreadsheetGear2012.Core">
+      <HintPath>..\_lib\SpreadsheetGear2012.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SpreadsheetGear2012.Windows.WPF">
+      <HintPath>..\_lib\SpreadsheetGear2012.Windows.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Printing" />
