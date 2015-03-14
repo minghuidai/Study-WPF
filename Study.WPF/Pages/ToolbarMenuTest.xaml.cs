@@ -10,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Study.WPF.Windows
+namespace Study.WPF.Pages
 {
     /// <summary>
-    /// Interaction logic for ChromeWindow.xaml
+    /// Interaction logic for ToolbarMenuTest.xaml
     /// </summary>
-    public partial class ChromeWindow : Window
+    public partial class ToolbarMenuTest : Page
     {
-        public ChromeWindow()
+        public ToolbarMenuTest()
         {
             InitializeComponent();
-
         }
     }
 }

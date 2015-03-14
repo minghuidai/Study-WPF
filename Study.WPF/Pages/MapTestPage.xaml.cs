@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Study.WPF.Pages
 {
@@ -28,6 +29,37 @@ namespace Study.WPF.Pages
             myMap.ViewChangeOnFrame += new EventHandler<MapEventArgs>(viewMap_ViewChangeOnFrame);
             // The default animation level: navigate between different map locations.
             //viewMap.AnimationLevel = AnimationLevel.Full;
+
+            CreateLayers();
+
+        }
+
+
+        private void CreateLayers()
+        {
+            var layer1 = new Microsoft.Maps.MapControl.WPF.MapLayer();
+            var layer2 = new Microsoft.Maps.MapControl.WPF.MapLayer();
+
+          
+
+            
+
+            //var stackPanel = new StackPanel();
+            //stackPanel.Children.Add(new Button() { Content = "Click Me" });
+
+            for (int i = 0; i < 10000; i++)
+            {
+
+                var t = new TextBlock();
+                t.Height = 5;
+                t.Width = 5;
+                t.Background = new SolidColorBrush(Color.FromRgb(120, 0, 0));
+                //stackPanel.Children.Add(new Button() { Content = "Click Me" });
+                layer1.AddChild(t, new Location(47.6424 + 0.001 * i, -122.3219));
+            }
+                //layer1.AddChild(stackPanel, new Location(47.6424, -122.3219));
+
+            myMap.Children.Add(layer1);
 
         }
 
