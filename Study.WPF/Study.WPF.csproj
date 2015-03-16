@@ -82,6 +82,9 @@
     <Compile Include="Pages\MapTestPage.xaml.cs">
       <DependentUpon>MapTestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ToolbarMenuTest.xaml.cs">
       <DependentUpon>ToolbarMenuTest.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\MapTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
