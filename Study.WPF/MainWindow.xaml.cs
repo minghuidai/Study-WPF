@@ -27,6 +27,7 @@ namespace Study.WPF
             //if (!this.IsInDesignMode) MessageBox.Show("design mode.");
 
             //this.WindowStyle = System.Windows.WindowStyle.None;
+
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Maps.MapControl.WPF;
+using Microsoft.Maps.MapControl.WPF.Core;
 using Microsoft.Maps.MapControl.WPF.Design;
 using Study.BingMap.Query;
 using System;
@@ -14,6 +15,8 @@ namespace Study.WPF.Pages
     public partial class MapTestPage : Page
     {
 
+        private string _BingMapSessionKey;
+
         LocationConverter locConverter = new LocationConverter();
         bool _PickingLocation = false;
         LocationCollection _PolygonPoints = null;
@@ -21,6 +24,24 @@ namespace Study.WPF.Pages
         public MapTestPage()
         {
             InitializeComponent();
+
+            _BingMapSessionKey = myMap.CredentialsProvider.SessionId;
+
+
+
+            myMap.CredentialsProvider.GetCredentials((c) =>
+            {
+                _BingMapSessionKey = c.ApplicationId;
+            });
+
+
+            // win 8
+            //myMap.Loaded += async (s, c) => {
+            //    try {
+            //        _BingMapSessionKey = await myMap.CredentialsProvider.GetCredentials()
+            //    }
+            //}
+
 
             myMap.Focus();
 
@@ -264,12 +285,6 @@ namespace Study.WPF.Pages
 
 
 
-        private void test()
-        {
-            //Microsoft.Maps.MapControl.WPF.Core.
-        }
-
-
 
         private void btnDrawBoundries_Click(object sender, RoutedEventArgs e)
         {
@@ -304,7 +319,7 @@ namespace Study.WPF.Pages
             string place = txtPlace.Text;
             string level = txtLevel.Text;
 
-            var bingservice = new BingMapQuery("Ai6zQ5AwxFAZKY3DtRmKAPJHZVlK4h_e01jNbblWGbagsXzwH0nf5vYrTEr13kBd");
+            var bingservice = new BingMapQuery(_BingMapSessionKey);
 
             var locations = bingservice.GetBoundries(place, level);
 
