@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+      xmlns:local="clr-namespace:Study.WPF"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="600"
 	Title="MapTestPage">
@@ -22,10 +23,28 @@
         </Grid.ColumnDefinitions>
 
 
-        <m:Map x:Name="myMap" CredentialsProvider="Ai6zQ5AwxFAZKY3DtRmKAPJHZVlK4h_e01jNbblWGbagsXzwH0nf5vYrTEr13kBd" 
+        <m:Map x:Name="myMap" CredentialsProvider="Ai6zQ5AwxFAZKY3DtRmKAPJHZVlK4h_e01jNbblWGbagsXzwH0nf5vYrTEr13kBd"
                Center="47.6424,-122.3219" ZoomLevel="8" Grid.Row="1" Grid.RowSpan="4"
                MouseDoubleClick="MapWithPushpins_MouseDoubleClick" MouseDown="myMap_MouseDown"
                Heading="0" Mode="Road">
+
+            <m:Map.CommandBindings>
+                <local:MapZoomInCommandBinding />
+                <local:MapZoomOutCommandBinding />
+                <local:SetRoadModeCommandBinding />
+                <local:SetAerialModeCommandBinding />
+            </m:Map.CommandBindings>
+
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button Margin="2" Content="+" Command="local:MapCommands.ZoomIn" />
+                <Button Margin="2" Content="-" Command="local:MapCommands.ZoomOut" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button Margin="2" Content="Road" Command="local:MapCommands.SetRoadMode" />
+                <Button Margin="2" Content="Aerial" Command="local:MapCommands.SetAerialMode" />
+            </StackPanel>
+
             <!--<m:MapPolygon Fill="Blue" Stroke="Green" StrokeThickness="5" 
                           Locations="47.6424,-122.3219 47.8424,-122.1747 47.5814,-122.1747" 
                           Opacity="0.6"/>-->

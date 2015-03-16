@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Study.WPF
+namespace Study.WPF.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Page1 : Page
     {
-        public MainWindow()
+        public Page1()
         {
             InitializeComponent();
-
-            //if (!this.IsInDesignMode) MessageBox.Show("design mode.");
-
-            //this.WindowStyle = System.Windows.WindowStyle.None;
-
         }
     }
 }

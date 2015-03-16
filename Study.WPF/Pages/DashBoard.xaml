@@ -11,5 +11,7 @@
         <TextBlock><Hyperlink NavigateUri="MapTestPage.xaml">Bing Map Test</Hyperlink></TextBlock>
         <TextBlock><Hyperlink NavigateUri="FancyStyleButton.xaml">Fancy Style Button</Hyperlink></TextBlock>
         <TextBlock><Hyperlink NavigateUri="ToolbarMenuTest.xaml">Toolban &amp; Menu</Hyperlink></TextBlock>
+        <TextBlock><Hyperlink NavigateUri="MapControlsPage.xaml">Map Controls</Hyperlink></TextBlock>
+        <TextBlock><Hyperlink NavigateUri="Page1.xaml">Page 1</Hyperlink></TextBlock>
     </StackPanel>
 </Page>
