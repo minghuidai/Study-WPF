@@ -9,7 +9,97 @@
 	Title="Page1">
     
     
-    <m:Map></m:Map>
+    <Page.Resources>
+        
+        <ControlTemplate x:Key="buttonTemplate" TargetType="{x:Type Button}">
+            <Grid>
+                <Ellipse x:Name="outerCircle" Width="24" Height="24" Stroke="#777777">
+                    <Ellipse.Fill>#999999</Ellipse.Fill>
+                </Ellipse>
+                
+                <Ellipse Width="20" Height="20">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Offset="0" Color="#ffffff" />
+                            <GradientStop Offset="1" Color="#440000" />
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Viewbox>
+                    <ContentControl Width="16" Height="16" Margin="5" Content="{TemplateBinding Content}" Foreground="White" />
+                </Viewbox>
+            </Grid>
+            
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="outerCircle" Property="Fill" Value="#dddddd"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX=".98" ScaleY=".98" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Control.Opacity" Value="0.3">
+                    </Setter>
+                </Trigger>
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        <Style x:Key="startButtonStyle" TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="red"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    
+    
+    <m:Map>
+        <Menu VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Collapsed">
+            <MenuItem Header="_File">
+                <MenuItem.Icon>
+                    <Image Width="16" Height="16" Margin="0" HorizontalAlignment="Right" Source="..\Images\features.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="_File">
+                <MenuItem.Icon>
+                    <Image Width="16" Height="16" Margin="0" HorizontalAlignment="Right" Source="..\Images\features.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+        </Menu>
+
+        <ToolBarTray HorizontalAlignment="Left" Orientation="Vertical">
+            <ToolBar Background="SteelBlue">
+                <Button Template="{StaticResource buttonTemplate}" ToolTip="Start a analysis" ToolTipService.ShowOnDisabled="True" IsEnabled="true">
+                    <Button.Content>
+                        <Image Width="16" Height="16" Margin="0" HorizontalAlignment="Right" Source="..\Images\bug - 2.png" />
+                    </Button.Content>
+                </Button>
+                
+                
+                <Button Template="{StaticResource buttonTemplate}">                    
+                    <Button.Content>
+                        <Image Width="16" Height="16" Margin="0" HorizontalAlignment="Right" Source="..\Images\features.png" />
+                    </Button.Content>
+                </Button>
+
+                <Button Template="{StaticResource buttonTemplate}" IsEnabled="False">
+                    <Button.Content>
+                        <Label Padding="0" Foreground="LightGreen" FontSize="11" FontWeight="Bold">OK</Label>
+                    </Button.Content>
+                </Button>
+
+            </ToolBar>
+        </ToolBarTray>
+        
+    </m:Map>
 
   
 </Page>
