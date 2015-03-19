@@ -13,5 +13,6 @@
         <TextBlock><Hyperlink NavigateUri="ToolbarMenuTest.xaml">Toolban &amp; Menu</Hyperlink></TextBlock>
         <TextBlock><Hyperlink NavigateUri="MapControlsPage.xaml">Map Controls</Hyperlink></TextBlock>
         <TextBlock><Hyperlink NavigateUri="Page1.xaml">Page 1</Hyperlink></TextBlock>
+        <TextBlock><Hyperlink NavigateUri="ProgressBar.xaml">Progress Bar</Hyperlink></TextBlock>
     </StackPanel>
 </Page>
