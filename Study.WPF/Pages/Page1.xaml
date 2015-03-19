@@ -26,7 +26,8 @@
                     </Ellipse.Fill>
                 </Ellipse>
                 <Viewbox>
-                    <ContentControl Width="16" Height="16" Margin="5" Content="{TemplateBinding Content}" Foreground="White" />
+                    <!--<ContentControl Width="16" Height="16" Margin="5" Content="{TemplateBinding Content}" Foreground="White" />-->
+                    <ContentPresenter Width="16" Height="16" Margin="5" Content="{TemplateBinding Content}" />
                 </Viewbox>
             </Grid>
             

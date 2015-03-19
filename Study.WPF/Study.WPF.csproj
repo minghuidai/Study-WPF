@@ -67,6 +67,8 @@
     </ApplicationDefinition>
     <Compile Include="Classes\BaseWindow.cs" />
     <Compile Include="Classes\MapCommands.cs" />
+    <Compile Include="Converters\ValueMinMaxToPointConverter.cs" />
+    <Compile Include="Converters\ValueMinMaxToIsLargeArcConverter.cs" />
     <Compile Include="Pages\ComboBoxStylePage.xaml.cs">
       <DependentUpon>ComboBoxStylePage.xaml</DependentUpon>
     </Compile>
@@ -84,6 +86,9 @@
     </Compile>
     <Compile Include="Pages\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProgressBar.xaml.cs">
+      <DependentUpon>ProgressBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ToolbarMenuTest.xaml.cs">
       <DependentUpon>ToolbarMenuTest.xaml</DependentUpon>
@@ -127,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
