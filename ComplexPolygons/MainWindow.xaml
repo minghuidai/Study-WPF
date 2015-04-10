@@ -1,0 +1,11 @@
+﻿<Window x:Class="ComplexPolygons.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <m:Map Name="MyMap" CredentialsProvider="YOUR_BING_MAPS_KEY"/>
+
+        <Button Content="Add Complex Polygon" Click="AddComplexPolygon_Clicked" Width="200" Height="45" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>
