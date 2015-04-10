@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study.WPF", "Study.WPF\Study.WPF.csproj", "{F6F03EBE-D007-48A9-ADC6-D8BB87F57E26}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingMapDataContracts", "BingMapDataContracts\BingMapDataContracts.csproj", "{14A69571-570E-4913-A11A-ABFD6E9D546F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simplestyles", "csharp Sample\simplestyles.csproj", "{6D7EB55B-9960-4520-AF8F-88109ABD7A12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplexPolygons", "..\ComplexPolygons\ComplexPolygons.csproj", "{F2DB7980-F638-4EA1-B864-A51EE39E82C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{6D7EB55B-9960-4520-AF8F-88109ABD7A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D7EB55B-9960-4520-AF8F-88109ABD7A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D7EB55B-9960-4520-AF8F-88109ABD7A12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2DB7980-F638-4EA1-B864-A51EE39E82C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2DB7980-F638-4EA1-B864-A51EE39E82C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2DB7980-F638-4EA1-B864-A51EE39E82C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2DB7980-F638-4EA1-B864-A51EE39E82C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
