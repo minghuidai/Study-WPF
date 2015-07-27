@@ -32,13 +32,13 @@ namespace ComplexPolygons
 
             //Create the colors for styling the complex polygon
             var fillColor = new SolidColorBrush(Color.FromArgb(150, 0, 255, 0));
-            var strokeColor = new SolidColorBrush(Color.FromArgb(150, 0, 0, 255));
+            var strokeColor = new SolidColorBrush(Color.FromArgb(250,250, 0, 0));
 
             MapPolygon polygon = null;
             List<MapPolyline> outlines = null;
 
             //Create the complex polygon.
-            CreatePolygon(rings, fillColor, strokeColor, 5, out polygon, out outlines);
+            CreatePolygon(rings, fillColor, strokeColor, 1, out polygon, out outlines);
 
             //If the polygon is not null add it to the map.
             if (polygon != null)

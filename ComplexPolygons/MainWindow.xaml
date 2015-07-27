@@ -4,7 +4,7 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <m:Map Name="MyMap" CredentialsProvider="YOUR_BING_MAPS_KEY"/>
+        <m:Map Name="MyMap" CredentialsProvider="Ai6zQ5AwxFAZKY3DtRmKAPJHZVlK4h_e01jNbblWGbagsXzwH0nf5vYrTEr13kBd"/>
 
         <Button Content="Add Complex Polygon" Click="AddComplexPolygon_Clicked" Width="200" Height="45" VerticalAlignment="Bottom"/>
     </Grid>

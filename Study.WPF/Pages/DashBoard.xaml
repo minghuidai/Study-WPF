@@ -14,5 +14,8 @@
         <TextBlock><Hyperlink NavigateUri="MapControlsPage.xaml">Map Controls</Hyperlink></TextBlock>
         <TextBlock><Hyperlink NavigateUri="Page1.xaml">Page 1</Hyperlink></TextBlock>
         <TextBlock><Hyperlink NavigateUri="ProgressBar.xaml">Progress Bar</Hyperlink></TextBlock>
+
+
+        <TextBlock Margin="0, 10, 0, 0"><Hyperlink Click="Hyperlink_Click" >Corner Radius Window</Hyperlink></TextBlock>
     </StackPanel>
 </Page>
