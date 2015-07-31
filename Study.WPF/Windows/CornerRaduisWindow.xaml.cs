@@ -11,22 +11,28 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Study.WPF.Controls;
 
 namespace Study.WPF.Windows
 {
     /// <summary>
     /// Interaction logic for CornerRaduisWindow.xaml
     /// </summary>
-    public partial class CornerRaduisWindow : Window
+    public partial class CornerRaduisWindow : DialogShell
     {
         public CornerRaduisWindow()
         {
             InitializeComponent();
+
+            //this.WindowStyle = System.Windows.WindowStyle.None;
+            //this.Background = new SolidColorBrush(Colors.Transparent);
+            //BorderThickness = new Thickness(1);
+            //AllowsTransparency = true;
+
+
+
+             //WindowStyle="None" Background="Transparent" BorderThickness="1" BorderBrush="Transparent" AllowsTransparency="False" 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

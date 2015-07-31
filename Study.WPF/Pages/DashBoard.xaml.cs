@@ -28,8 +28,12 @@ namespace Study.WPF.Pages
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            var win = new CornerRaduisWindow();
-            win.ShowDialog();
+            //var win = new CornerRaduisWindow();
+            //win.ShowDialog();
+
+            var w = new Window1();
+            w.ShowDialog();
+
 
         }
     }

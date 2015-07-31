@@ -32,6 +32,15 @@
                 <ResourceDictionary Source="Resources\Window.xaml" />
                 <ResourceDictionary Source="Resources\NavigationWindow.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
+            
+            <SolidColorBrush x:Key="TitleBackground" Color="#111e23" />
+            <SolidColorBrush x:Key="TitleForeground" Color="#aaaaaa" />
+            
+            <Style x:Key="TitleLabelStyle" TargetType="{x:Type Label}">
+                <Setter Property="Foreground" Value="{StaticResource TitleForeground}" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
